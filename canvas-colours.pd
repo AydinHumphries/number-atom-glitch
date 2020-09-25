@@ -1,0 +1,64 @@
+#N canvas -8 -8 1366 685 12;
+#X symbolatom 9 164 12 0 0 0 - - -;
+#X symbolatom 63 209 12 0 0 0 - - -;
+#X symbolatom 149 164 12 0 0 0 - - -;
+#X obj 9 266 pack symbol symbol symbol;
+#X symbolatom 9 316 10 0 0 0 - - -;
+#X obj 9 136 makefilename %02x;
+#X obj 63 186 makefilename %02x;
+#X obj 149 136 makefilename %02x;
+#X msg 9 291 symbol #\$1\$2\$3;
+#X obj 165 215 t b s;
+#X obj 79 237 t b s;
+#X obj 9 390 send \$0-cnv;
+#X obj 9 341 pack symbol symbol symbol;
+#X msg 9 365 color \$1 \$2 \$3;
+#X floatatom 9 108 5 0 0 0 - - -;
+#X floatatom 64 108 5 0 0 0 - - -;
+#X floatatom 149 108 5 0 0 0 - - -;
+#X obj 200 247 cnv 15 100 60 empty \$0-cnv Canvas 20 12 0 14 -1 -1
+0;
+#X obj 9 12 loadbang;
+#X msg 9 36 0;
+#X text 180 21 steps to replicate issue: #1 take number atom labelled
+(a) \, slide it higher than 255;
+#X floatatom 115 30 5 0 0 1 (a) - -;
+#X text 263 67 #2 take number atom labelled (b) \, try to change value:
+notice how it freezes until you click on the white space on the screen
+;
+#X floatatom 363 115 5 0 0 1 (b) - -;
+#X text 275 146 #3 take vslider labelled (c) - go ahead and try to
+change the value: slide up and down \, bang 50 in \, etc. - nothing
+will change;
+#X msg 323 208 50;
+#X obj 323 232 vsl 15 50 0 127 0 0 empty empty (c) 17 20 0 10 -262144
+-1 -1 0 1;
+#X floatatom 323 290 5 0 0 0 - - -;
+#X text 213 313 #4 check error messages on pd log;
+#X connect 0 0 3 0;
+#X connect 1 0 10 0;
+#X connect 2 0 9 0;
+#X connect 3 0 8 0;
+#X connect 4 0 12 0;
+#X connect 5 0 0 0;
+#X connect 6 0 1 0;
+#X connect 7 0 2 0;
+#X connect 8 0 4 0;
+#X connect 9 0 3 0;
+#X connect 9 1 3 2;
+#X connect 10 0 3 0;
+#X connect 10 1 3 1;
+#X connect 12 0 13 0;
+#X connect 13 0 11 0;
+#X connect 14 0 5 0;
+#X connect 15 0 6 0;
+#X connect 16 0 7 0;
+#X connect 18 0 19 0;
+#X connect 19 0 14 0;
+#X connect 19 0 15 0;
+#X connect 19 0 16 0;
+#X connect 21 0 14 0;
+#X connect 21 0 15 0;
+#X connect 21 0 16 0;
+#X connect 25 0 26 0;
+#X connect 26 0 27 0;
